@@ -1,0 +1,86 @@
+.profile_content {
+  display: flex;
+  width: 100%;
+  justify-content: center;
+  .profile_settings {
+    display: flex;
+    width: 500px;
+    padding: 0 1rem;
+    justify-content: center;
+    flex-direction: column;
+    .photo_content {
+      display: flex;
+      width: 100%;
+      justify-content: center;
+
+      .profile_img {
+        position: relative;
+        width: 125px;
+        height: 125px;
+        border-radius: 50%;
+        border: 1px solid #eeeeee;
+        overflow: hidden;
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+        img {
+          width: 100%;
+          object-fit: cover;
+        }
+      }
+      .img_btn {
+        border:none;
+        position: absolute;
+        background: #185adb;
+        width: 25px;
+        height: 25px;
+        border-radius: 100%;
+        margin-left: 100px;
+        margin-top: -35px;
+        
+        .img_btn_text{
+          font-size: 18px;
+          font-weight: 100;
+          color: white;
+          text-align: center;
+          align-items: center;
+          margin-top: -3px;
+        }
+        &:hover{
+          background: #5181e2;
+        }
+      } 
+      
+    }
+    .profile_form {
+      .profile_form_text {
+        color: #515e63;
+        font-weight: 500;
+        margin-bottom: 0.2rem;
+      }
+      .profile_form_input {
+        border: 1px solid #b2b1b9;
+        background: #eeeeee;
+        width: 100%;
+        height: 40px;
+        border-radius: 0.2rem;
+        margin-bottom: 0.6rem;
+        outline: none;
+      }
+    }
+    .profile_form_sifre {
+      font-size: 1.3rem;
+      text-align: center;
+      margin-top: 1rem;
+    }
+    .profile_form_btn {
+      background: #185adb;
+      color: white;
+      width: 6rem;
+      height: 3rem;
+      border: none;
+      margin-top: 1rem;
+      border-radius: 0.5rem;
+    }
+  }
+}

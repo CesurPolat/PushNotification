@@ -1,0 +1,67 @@
+<!-- <ng-container>
+    <h1>İş Detay</h1>
+    <h2>{{item?.id}}</h2>
+</ng-container> -->
+
+<br>
+<div class="card-wrapper">
+    <h3 class="closed-w" *ngIf="woStatusUsers?.isClosed">Bu iş için, daha önce işlem yaptınız</h3>
+
+    <div class="card-headings">
+        <!--  <app-status-name [statusID]="item?.instantStatusId"></app-status-name> -->
+        <strong>{{woStatusUsers?.status?.name}}</strong>
+    </div>
+    <nz-card [nzActions]="[actionCustomer, actionLocation]">
+
+        <div class="c-header f-column">
+            <!--  <app-status-name [statusID]="item?.instantStatusId"></app-status-name> -->
+        </div>
+        <!--    <nz-divider></nz-divider> -->
+        <div class="row light-text"><label> <strong> İş Açıklaması &nbsp;:  </strong>&nbsp;</label><span>{{item?.description}}</span></div>
+        <div class="row light-text"><label> <strong> Görev Açıklaması &nbsp;:  </strong> &nbsp;</label><span>{{woStatusUsers?.description}}</span></div>
+        <div class="flex-wrapper">
+
+            <br>
+            <div class="half">
+                <div class="row"><label>Görev No</label><span>#{{item?.id}}</span></div>
+                <div class="row"><label>Görev Tarihi</label><span><strong>{{woStatusUsers?.endDate | date:'EEEE - dd/MM/yyyy HH:mm'}}</strong></span></div>
+                <div class="row"><label>Araç</label><span><strong>{{woStatusUsers?.car?.name}}</strong></span></div>
+                <div class="row" *ngFor="let item of woStatusUsers?.workOrderStatusUsers"><label>Personel</label><span>{{item?.relationUser?.firstName + ' ' + item?.relationUser?.lastName }}</span></div>
+
+            </div>
+            <div class="half">
+                <div class="row"><label>Müşteri</label><span>{{item?.customer?.fullName}}</span></div>
+                <div class="row"><label>Adres:</label><span>{{item?.customer?.address}}</span></div>
+                <div class="row"><label>Arıza Tipi</label><span>{{item?.faultType?.name}}</span></div>
+                <div class="row"><label>Arıza İsteği</label><span>{{item?.faultRequest?.name}}</span></div>
+            </div>
+        </div>
+
+    </nz-card>
+    <ng-template #avatarTemplate>
+        <nz-avatar nzSrc="https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png"></nz-avatar>
+    </ng-template>
+    <ng-template #actionCustomer>
+
+        <a href="tel:9{{item?.customer?.phone}}" target="_blank" rel="noopener noreferrer">
+            <i nz-icon nzType="phone"></i> Müsteri Ara
+        </a>
+    </ng-template>
+    <ng-template #actionLocation>
+        <!--  <i nz-icon nzType="ellipsis"></i> -->
+
+        <a href="{{item?.googleMaps}}" target="_blank" rel="noopener noreferrer">
+            <i class="fa fa-map-marker" aria-hidden="true"></i> Konum Göster
+        </a>
+    </ng-template>
+</div>
+
+
+
+<br><br><br>
+
+<div class="bottom-nav-buttons">
+    <a class="prev" routerLink="/">GERİ</a>
+    <a class="next" *ngIf="!woStatusUsers?.isClosed" routerLink="/is-emirleri/is-sonlandir/{{item?.id}}">GÖREVİ TAMAMLA</a>
+    <a class="next" *ngIf="woStatusUsers?.isClosed" routerLink="/is-emirleri/is-guncelle/{{woStatusUsers?.id}}">GÜNCELLE</a>
+</div>

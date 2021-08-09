@@ -1,0 +1,98 @@
+.closed-w {
+    padding: 10px;
+    background: #ec2142;
+    color: #fff;
+}
+
+.f-column {
+    display: flex;
+    flex-direction: column !important;
+    align-items: flex-start !important;
+    .light-text {
+        color: #33333395;
+        margin-top: 8px;
+    }
+}
+
+.card-headings {
+    padding: 20px;
+    background: #f9f9f9;
+    border-bottom: 1px solid #dddddd;
+    font-weight: 500;
+    font-size: 16px;
+}
+
+.workorder-detay {
+    position: relative;
+    width: 90%;
+    height: 42%;
+    background: #f9f9f9;
+    margin-left: 5%;
+    border-radius: 15px;
+    border: 1px solid #dddddd;
+    padding: 1rem;
+    .workorder-detay-header {
+        width: 100%;
+        padding: 1rem 2rem;
+        border-radius: 15px;
+        //    box-shadow: rgba(0, 0, 0, 0.2) 0px 12px 28px 0px, rgba(0, 0, 0, 0.1) 0px 2px 4px 0px, rgba(255, 255, 255, 0.05) 0px 0px 0px 1px inset;
+    }
+}
+
+.workorder_detay_is {
+    position: relative;
+    width: 90%;
+    height: 70%;
+    background: #f9f9f9;
+    margin-top: 3rem;
+    margin-left: 5%;
+    border-radius: 15px;
+    border: 1px solid #dddddd;
+    padding: 1rem;
+    .workorder_detay_is_header {
+        width: 100%;
+        padding: 1rem 2rem;
+        border-radius: 15px;
+        font-size: 1rem;
+        //    box-shadow: rgba(0, 0, 0, 0.2) 0px 12px 28px 0px, rgba(0, 0, 0, 0.1) 0px 2px 4px 0px, rgba(255, 255, 255, 0.05) 0px 0px 0px 1px inset;
+    }
+}
+
+::ng-deep {
+    .ant-page-header-content {
+        width: 50%;
+        float: left;
+        padding-left: 1rem;
+        margin-bottom: -2rem;
+    }
+    @media screen and (max-width: 700px) {
+        .ant-page-header-content {
+            width: 100%;
+            clear: both;
+            padding-top: 0;
+        }
+        .workorder-detay {
+            height: 50%;
+        }
+    }
+}
+
+.bottom-nav-buttons {
+    width: 100%;
+    position: fixed;
+    background: #333;
+    display: flex;
+    bottom: 0;
+    a {
+        width: 50%;
+        text-align: center;
+        padding: 10px 20px;
+        color: #fff;
+    }
+    .prev {
+        background-color: #ec2142;
+    }
+    .next {
+        background: deepskyblue;
+    }
+}

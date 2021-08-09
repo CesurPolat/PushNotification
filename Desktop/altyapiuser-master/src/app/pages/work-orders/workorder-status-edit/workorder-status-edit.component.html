@@ -1,0 +1,114 @@
+<br>
+<div class="card-wrapper">
+    <div class="container p10">
+        <h2>İş Fotoğrafları</h2>
+        <nz-divider></nz-divider>
+        <div class="up-image-container">
+            <div class="img-item" *ngFor="let img of workOrderStatusPhotos; let i = index">
+                <img nz-image nzSrc="{{img.url}}">
+                <i nz-icon nzType="delete" (click)="deletePhoto(img.id , i)"></i>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<div class="card-wrapper">
+    <form name="form" id="kf-form" class="w-100" (ngSubmit)="fm.form" #fm="ngForm" novalidate>
+
+        <nz-card>
+            <h1> İş Durumu Güncelle</h1>
+            <div class="c-header ">
+
+            </div>
+            <nz-divider></nz-divider>
+            <nz-upload [nzFileType]="'image/png,image/jpeg,image/gif,image/bmp'" [(nzFileList)]="fileList" [nzBeforeUpload]="beforeUpload" [nzShowUploadList]="false">
+                <button nz-button>
+                    <i nz-icon nzType="upload"></i>
+                    Fotoğraf Ekle
+                </button>
+            </nz-upload>
+            <div class="up-image-container" *ngIf="fileList.length > 0">
+                <div class="img-item" *ngFor="let item of fileList; let i = index">
+                    <img nz-image nzSrc="{{item.preview}}">
+
+                    <i nz-icon nzType="delete" (click)="deleteFileListitem(i)"></i>
+                </div>
+
+            </div>
+            <nz-divider></nz-divider>
+            <div class="flex-wrapper column-wrapper">
+
+
+                <!-- TODO Arıza Statüsü Seç -->
+                <div class="col-12 mb-1">
+                    <label class="ariza_header">İş Durumu</label>
+                    <br>
+                    <nz-select #statu="ngModel" name="İş Durumu" nzPlaceHolder="İş Durumu Seçin" class="w-100-noform" [(ngModel)]="workOrderStatus.statusId" [ngClass]="{ 'is-invalid': fm.submitted && statu.invalid }" required>
+                        <nz-option [nzValue]="item.id" [nzLabel]="item.name" *ngFor="let item of workStatusList">
+                        </nz-option>
+                    </nz-select>
+                    <div *ngIf="fm.submitted && statu.invalid" class="invalid-feedback text-left">
+                        <div *ngIf="statu.errors.required">İş durumu seçmeyi unutmayın.
+                        </div>
+                    </div>
+                </div>
+
+
+
+                <!-- TODO Statü Açıklama -->
+                <div class="col-12 mb-1">
+                    <label class="ariza_header"> Açıklama</label>
+                    <br>
+
+                    <nz-input-group [nzSuffix]="textAreaClearTpl" class="ant-input-affix-wrapper-textarea-with-clear-btn">
+                        <textarea nz-input #stcomm="ngModel" name="Durum Açıklaması" [(ngModel)]="workOrderStatus.description" placeholder="Durum Açıklaması" class="vueInp w-100-noform" [ngClass]="{ 'is-invalid': fm.submitted && stcomm.invalid }" required></textarea>
+                    </nz-input-group>
+                    <ng-template #textAreaClearTpl><i nz-icon class="ant-input-textarea-clear-icon" nzTheme="fill" nzType="close-circle" *ngIf="textValue" (click)="textValue = null"></i></ng-template>
+                    <div *ngIf="fm.submitted && stcomm.invalid" class="invalid-feedback text-left">
+                        <div *ngIf="stcomm.errors.required">Açıklama eklemeyi unutmayın.</div>
+                    </div>
+                </div>
+
+                <!-- TODO Hizmeti Alan -->
+                <div class="col-12 mb-1">
+                    <label class="ariza_header"> Hizmeti Alan</label>
+                    <br>
+                    <input disabled nz-input name="Hizmeti Alan" #sthzmalan="ngModel" [(ngModel)]="workOrderStatus.signatory" [ngClass]="{ 'is-invalid': fm.submitted && sthzmalan.invalid }" placeholder="Hizmeti Alan" required />
+                    <div *ngIf="fm.submitted && sthzmalan.invalid" class="invalid-feedback text-left">
+                        <div *ngIf="sthzmalan.errors.required">Hizmeti alan kişi eklemeyi unutmayın.</div>
+                    </div>
+                </div>
+
+                <!-- TODO İmza  -->
+                <div class="signatureWrapper">
+                    <label>İmza</label>
+                    <div class="signature-wrapper">
+
+                        <img [src]="'https://aydemirapi.ndepo.com' +  workOrderStatus.signature" alt="">
+
+                    </div>
+                    <!--  <div class="signature-container">
+                        <signature-pad id="sign-pad" ngDefaultControl [options]="signaturePadOptions" #imza="ngModel" [(ngModel)]="workOrderStatus.signature" name="Müşteri imza"  (onEndEvent)="drawComplete()" [ngClass]="{ 'is-invalid': fm.submitted && imza.invalid }"
+                            required>
+                        </signature-pad>
+                    </div>
+                    <a (click)="clearSignature()" class="imza_delete">Temizle</a>
+
+                    <div *ngIf="fm.submitted && imza.invalid" class="invalid-feedback text-left">
+                        <div *ngIf="imza.errors.required">Müşteri İmzası Zorunludur</div>
+                    </div> -->
+                </div>
+            </div>
+
+
+            <br>
+            <button form="kf-form" nz-button [nzLoading]="isLoading" class="btn btn-primary btn-hovered waves-effect waves-float waves-light ant-btn" [nzType]="'primary'" (click)="send(fm)"><span>Kaydet</span></button>
+
+        </nz-card>
+    </form>
+
+
+
+</div>

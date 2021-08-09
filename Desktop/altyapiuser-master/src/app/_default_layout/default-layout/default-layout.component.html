@@ -1,0 +1,35 @@
+<nav id="top">
+    <div class="logo">
+        <a routerLink="/">
+        <img width="40px"
+            src="https://ng.ant.design/assets/img/logo.svg" alt="">
+        </a>
+    </div>
+    <div class="actionBar">
+        <nz-space [nzSize]="16">
+
+            <!-- todo Notifications -->
+            <nz-badge *nzSpaceItem nzDot><i nz-icon nzType="notification"></i></nz-badge>
+
+            <!-- todo Profile -->
+            <a class="topMenuDrop" *nzSpaceItem nz-dropdown [nzDropdownMenu]="menu">
+                <nz-avatar nzIcon="user" nzSrc="//zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png"></nz-avatar>
+                <i nz-icon nzType="down"></i>
+            </a>
+
+            <nz-dropdown-menu #menu="nzDropdownMenu">
+                <ul nz-menu nzSelectable>
+                    <li nz-menu-item>
+                        <a routerLink="/settings/profil">
+                            <i nz-icon nzType="user" nzTheme="outline"></i> Profil</a>
+                    </li>
+
+                    <li nz-menu-item>
+                        <a (click)="signOut()"><i nz-icon nzType="export" nzTheme="outline"></i>Çıkış</a>
+                    </li>
+                </ul>
+            </nz-dropdown-menu>
+        </nz-space>
+    </div>
+</nav>
+<router-outlet></router-outlet>

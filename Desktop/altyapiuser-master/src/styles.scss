@@ -1,0 +1,77 @@
+/* You can add global styles to this file, and also import other style files */
+
+@mixin easing($arg) {
+    -webkit-transition: all $arg + ms cubic-bezier(0.42, 0, 0.58, 1);
+    -moz-transition: all $arg + ms cubic-bezier(0.42, 0, 0.58, 1);
+    -o-transition: all $arg + ms cubic-bezier(0.42, 0, 0.58, 1);
+    transition: all $arg + ms cubic-bezier(0.42, 0, 0.58, 1);
+    /* ease-in-out */
+}
+
+@mixin mq($arg) {
+    @media screen and (max-width: $arg) {
+        @content;
+    }
+}
+
+.m-6{
+    margin: 6px;
+}
+
+.status-card{
+    display: flex;
+    overflow-x: auto;
+    padding-bottom: 10px;
+}
+
+.status-card2{
+    display: flex;
+    overflow-x: auto;
+    padding-bottom: 10px;
+}
+
+.is-invalid {
+    border: 1px solid red;
+}
+
+body {
+    background: #fbfbfb;
+}
+
+.ant-card-bordered {
+    border: unset;
+}
+
+.card-wrapper {
+    margin: 20px;
+    background: #fff;
+    border: 1px solid #ddd;
+}
+
+.flex-wrapper {
+    display: flex;
+    margin-top: 20px;
+    @include mq(768px) {
+        flex-direction: column;
+    }
+    .half {
+        width: 50%;
+        @include mq(768px) {
+            width: 100%;
+        }
+        .row {
+            width: 100%;
+            label {
+                width: 120px;
+                display: inline-block;
+                color: #ec2142;
+            }
+        }
+    }
+}
+
+.c-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
